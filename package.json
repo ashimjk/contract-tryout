@@ -7,6 +7,7 @@
     "generate-contracts": "sh cicd/generate-contracts.sh",
     "generate-specs": "sh cicd/generate-specs.sh",
     "build-contracts": "sh cicd/build-contracts.sh",
+    "publish-contracts": "sh cicd/publish-contracts.sh",
     "docs": "http-server docs"
   },
   "keywords": [],

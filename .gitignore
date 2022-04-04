@@ -7,3 +7,4 @@ artifacts
 temp
 docs/specs
 openapitools.json
+cicd/settings.xml
