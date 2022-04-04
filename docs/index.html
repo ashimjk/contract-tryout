@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>API Contract</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        iframe {
+            position: fixed;
+            top: 67px;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo" style="padding-left: 20px;">API Contract</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a onclick="loadInIframe('payroll.html')">Payroll</a></li>
+            <li><a onclick="loadInIframe('petstore.html')">Petstore</a></li>
+        </ul>
+    </div>
+</nav>
+
+<iframe id="frameID" src="payroll.html"></iframe>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    function loadInIframe(url) {
+        document.getElementById('frameID').src = url;
+    }
+</script>
+
+</body>
+</html>

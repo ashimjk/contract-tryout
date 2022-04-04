@@ -1,0 +1,21 @@
+{
+  "name": "contract-tryout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "openapi": "openapi-generator-cli",
+    "swaggercli": "swagger-cli",
+    "generate": "cicd/generate.sh",
+    "docs": "http-server docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "@faker-js/faker": "^6.1.1",
+    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "http-server": "^14.1.0"
+  }
+}

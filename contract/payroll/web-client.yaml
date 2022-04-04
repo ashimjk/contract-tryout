@@ -1,0 +1,9 @@
+'!include': '../common/typescript.yaml'
+
+inputSpec: 'contract/payroll/spec/index.yaml'
+outputDir: 'artifacts/payroll/client'
+
+npmName: '@corpay/payroll-contract'
+npmVersion: 'v1.0.0'
+
+apiModulePrefix: 'PayrollContract'

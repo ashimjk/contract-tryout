@@ -1,0 +1,249 @@
+openapi: 3.0.0
+info:
+  title: Payroll
+  version: 1.0.0
+tags:
+  - name: employee
+    description: Payroll Management System
+servers:
+  - url: http://localhost:4010
+x-json-schema-faker:
+  locale: en
+  min-items: 2
+  max-items: 4
+  resolve-json-path: true
+paths:
+  /employees:
+    get:
+      tags:
+        - employee
+      summary: Get all employee
+      operationId: employees
+      parameters:
+        - name: employeeId
+          in: query
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: 'Successful'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmployeeResponse'
+    post:
+      tags:
+        - employee
+      summary: Add a new employee
+      operationId: addEmployee
+      requestBody:
+        $ref: '#/components/requestBodies/EmployeeRequest'
+      responses:
+        '201':
+          description: Created Employee Successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              example:
+                - title: invalid request
+                  status: 400
+                  detail: name and photoUrls must be provided
+                  validation:
+                    - code: required
+                      field: name
+                      severity: error
+                      message: must have provided
+                    - code: required
+                      field: photoUrls
+                      severity: error
+                      message: must have provided
+        '405':
+          description: Invalid input
+  /employees/{reference}:
+    get:
+      tags:
+        - employee
+      summary: Get employee
+      operationId: employee
+      parameters:
+        - name: reference
+          in: path
+          description: reference of employee to return
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeResponse'
+              examples:
+                ashim:
+                  summary: An employee
+                  value:
+                    reference: 2ddb20b8-e0e3-45ae-a638-42610b990a6a
+                    firstName: ashim
+                    lastName: khadka
+                    gender: male
+                    age: 30
+                    email: ashim@gmail.com
+                    createdAt: 2019-08-24T14:15:22Z,
+                    modifiedAt: 2019-08-24T14:15:22Z
+                kushal:
+                  summary: An employee
+                  value:
+                    reference: 4acb30ef-e0e3-45ae-a638-42610b990a6a
+                    firstName: kushal
+                    lastName: shrechan
+                    gender: male
+                    age: 28
+                    email: kushal@gmail.com
+                    createdAt: 2019-08-24T14:15:22Z,
+                    modifiedAt: 2019-08-24T14:15:22Z
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '418':
+          description: teapot response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeResponse'
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+  /employees/{reference}/uploadImage:
+    post:
+      tags:
+        - employee
+      summary: uploads an image
+      operationId: uploadFile
+      parameters:
+        - name: reference
+          in: path
+          description: Reference of employee to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                additionalMetadata:
+                  description: Additional data to pass to server
+                  type: string
+                file:
+                  description: file to upload
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+components:
+  requestBodies:
+    EmployeeRequest:
+      required: true
+      description: Pet object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+              gender:
+                type: string
+                enum:
+                  - MALE
+                  - FEMALE
+                  - OTHERS
+              age:
+                type: integer
+                format: int64
+              email:
+                type: string
+                format: email
+            required:
+              - firstName
+              - lastName
+              - gender
+              - age
+              - email
+  schemas:
+    EmployeeResponse:
+      type: object
+      properties:
+        reference:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+          x-faker: name.firstName
+        lastName:
+          type: string
+          x-faker: name.lastName
+        gender:
+          type: string
+          enum:
+            - male
+            - female
+            - others
+        age:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 100
+          x-faker:
+            datatype.number:
+              min: 1
+              max: 100
+        email:
+          type: string
+          format: email
+        createdAt:
+          type: string
+          format: date-time
+        modifiedAt:
+          type: string
+          format: date-time
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string

@@ -1,0 +1,21 @@
+generatorName: 'java'
+library: 'rest-assured'
+
+groupId: 'com.progressoft.corpay'
+
+generateApiDocumentation: false
+generateSupportingFiles: false
+validateSpec: true
+strictSpec: true
+
+additionalProperties:
+  java8: true
+  dateLibrary: 'java8-localdatetime'
+  serializableModel: true
+  serializationLibrary: 'jackson'
+  prependFormOrBodyParameters: true
+  performBeanValidation: false
+  useBeanValidation: false
+  bigDecimalAsString: true
+  booleanGetterPrefix: 'is'
+  ensureUniqueParams: true

@@ -1,0 +1,32 @@
+generatorName: 'spring'
+library: 'spring-boot'
+
+groupId: 'io.github.ashimjk.contract'
+
+parentGroupId: 'org.springframework.boot'
+parentArtifactId: 'spring-boot-starter-parent'
+parentVersion: '2.5.5'
+
+generateApiDocumentation: false
+generateSupportingFiles: false
+validateSpec: true
+strictSpec: true
+
+additionalProperties:
+  java8: true
+  dateLibrary: 'java8-localdatetime'
+  serializableModel: true
+  serializationLibrary: 'jackson'
+  interfaceOnly: true
+  skipDefaultInterface: true
+  prependFormOrBodyParameters: true
+  singleContentTypes: true
+  performBeanValidation: false
+  useBeanValidation: false
+  swaggerDocketConfig: false
+  useTags: true
+  bigDecimalAsString: true
+  booleanGetterPrefix: 'is'
+  ensureUniqueParams: true
+  delegatePattern: false
+  hateoas: false

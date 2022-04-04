@@ -1,0 +1,8 @@
+'!include': '../common/spring-boot.yaml'
+inputSpec: 'contract/payroll/spec/index.yaml'
+outputDir: 'artifacts/payroll/server'
+artifactId: 'payroll-api'
+artifactVersion: 'v1.0.0'
+apiPackage: 'com.ashimjk.contract.payroll.api'
+modelPackage: 'com.ashimjk.contract.payroll.model'
+invokerPackage: 'com.ashimjk.contract.payroll.api.invoker'

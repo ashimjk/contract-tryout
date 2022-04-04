@@ -1,0 +1,47 @@
+### Get All Pets
+GET http://localhost:4010/pets
+
+### Get Pet by Id
+
+GET http://localhost:4010/pets/1234
+
+### Get Pet by Id using Example 'dog'
+
+GET http://localhost:4010/pets/1234?__example=dog
+
+### Get Pet by Id using Dynamic Value
+
+GET http://localhost:4010/pets/1234?__dynamic=true
+
+### Get Pet by Id using Code 404
+
+GET http://localhost:4010/pets/1234?__code=404
+
+### Get Pet by Id using Code 418
+
+GET http://localhost:4010/pets/1234?__code=418
+
+### Validate Error while Creating Pet
+
+POST http://localhost:4010/pets
+Content-Type: application/json
+
+{
+  "name": "turtle"
+}
+
+### Create Pet
+
+POST http://localhost:4010/pets
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "turtle",
+  "photoUrls": [
+    "https://turtlebook.com/stowford.jpg"
+  ]
+}
+
+###
+
