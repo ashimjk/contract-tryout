@@ -2,12 +2,12 @@
 
 MODULE_NAME=$1
 
-SERVER_SPEC_LOCATION=$(sh ./cicd/util/config.sh server-spec-location $MODULE_NAME)
+SPEC_OUTPUT_FILE=$(sh ./cicd/util/config.sh server-spec-output-file $MODULE_NAME)
 #OUTPUT_DIR=$(sh ./cicd/util/config.sh contract-output-dir)
 
 openapi_generate() {
   echo "Generating contract for ${MODULE_NAME}"
-  npm run openapi batch ${SERVER_SPEC_LOCATION}
+  npm run openapi batch ${SPEC_OUTPUT_FILE}
   #  npm run openapi batch contract/${module}/web-client.yaml
 
   #  SERVER_CLIENT=contract/${module}/server-client.yaml

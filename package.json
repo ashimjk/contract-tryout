@@ -6,7 +6,7 @@
   "scripts": {
     "openapi": "openapi-generator-cli",
     "swaggercli": "swagger-cli",
-    "generate": "cicd/generate-contract.sh",
+    "generate": "cicd/generator/generate-contract.sh",
     "docs": "http-server docs"
   },
   "keywords": [],
