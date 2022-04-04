@@ -1,11 +1,11 @@
 generatorName: 'spring'
 library: 'spring-boot'
 
-groupId: 'io.github.ashimjk.contract'
+groupId: 'com.ashimjk.contract'
 
 parentGroupId: 'org.springframework.boot'
 parentArtifactId: 'spring-boot-starter-parent'
-parentVersion: '2.5.5'
+parentVersion: '2.6.5'
 
 generateApiDocumentation: false
 generateSupportingFiles: false

@@ -1,5 +1,9 @@
 #!/bin/sh
 
+SCRIPT_DIR="$(cd "$(dirname "${0}")" && pwd)"
+SCRIPT_DIR="$(dirname ${SCRIPT_DIR})"
+cd $SCRIPT_DIR
+
 echo "------------BEGIN: GENERATE------------"
 
 . ./cicd/configs/common.config
@@ -8,10 +12,10 @@ sh ./cicd/utils/directory.sh contract-output-dir-create
 
 modules=$(sh ./cicd/modules.sh)
 for module in $modules; do
-  echo "Generating code for module: ${module}\n"
-  sh ./cicd/generator/server-contract.sh $module
-  sh ./cicd/generator/server-client-contract.sh $module
-  sh ./cicd/generator/web-client-contract.sh $module
+  echo "Generating config for module: ${module}\n"
+  sh ./cicd/contract-generator/server.sh $module
+  sh ./cicd/contract-generator/server-client.sh $module
+  sh ./cicd/contract-generator/web-client.sh $module
 done
 
 echo "\nGenerate contract"

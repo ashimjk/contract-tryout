@@ -180,31 +180,33 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              firstName:
-                type: string
-              lastName:
-                type: string
-              gender:
-                type: string
-                enum:
-                  - MALE
-                  - FEMALE
-                  - OTHERS
-              age:
-                type: integer
-                format: int64
-              email:
-                type: string
-                format: email
-            required:
-              - firstName
-              - lastName
-              - gender
-              - age
-              - email
+            $ref: "#/components/schemas/EmployeeRequest"
   schemas:
+    EmployeeRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        gender:
+          type: string
+          enum:
+            - MALE
+            - FEMALE
+            - OTHERS
+        age:
+          type: integer
+          format: int64
+        email:
+          type: string
+          format: email
+      required:
+        - firstName
+        - lastName
+        - gender
+        - age
+        - email
     EmployeeResponse:
       type: object
       properties:

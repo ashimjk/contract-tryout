@@ -1,5 +1,9 @@
 #!/bin/sh
 
+SCRIPT_DIR="$(cd "$(dirname "${0}")" && pwd)"
+SCRIPT_DIR="$(dirname ${SCRIPT_DIR})"
+cd $SCRIPT_DIR
+
 echo "------------BEGIN: GENERATE SPECS------------"
 
 modules=$(sh ./cicd/modules.sh)

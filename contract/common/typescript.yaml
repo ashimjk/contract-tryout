@@ -1,7 +1,12 @@
 generatorName: 'typescript-angular'
+
 ngVersion: '11.0.0'
+npmRepository: https://nexus.corporate-dev.progressoft.cloud/repository/kryptonite-npm
+
 providedInRoot: true
 supportsES6: true
 strictSpec: true
 validateSpec: true
-npmRepository: https://nexus.corporate-dev.progressoft.cloud/repository/kryptonite-npm
+
+additionalProperties:
+  enumPropertyNaming: 'UPPERCASE'

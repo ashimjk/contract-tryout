@@ -1,7 +1,7 @@
 generatorName: 'java'
 library: 'rest-assured'
 
-groupId: 'com.progressoft.corpay'
+groupId: 'com.ashimjk.contract'
 
 generateApiDocumentation: false
 generateSupportingFiles: false
