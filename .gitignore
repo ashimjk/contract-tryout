@@ -1,5 +1,8 @@
-.idea
-artifacts
+**/.idea
+**/*.iml
+
 node_modules
-package-lock.json
+
+artifacts
 temp
+docs/specs

@@ -3,17 +3,24 @@ info:
   title: Fixed Deposit API
   description: Fixed Deposit API
   version: 1.0.0
+
 servers:
-  - url: 'http://localhost:8080'
+  - url: http://localhost:4010
 
 paths:
-  /api/v1/fixed-deposit:
+  /api/v1/fixed-deposits:
     get:
-      summary: get-fixed-deposit
+      summary: fixed-deposits
       operationId: get-fixed-deposit
       responses:
-        200:
-          $ref: '#/components/schemas/FixedDepositResponse'
+        '200':
+          description: 'Successful'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FixedDepositResponse'
 
 components:
   schemas:
@@ -22,8 +29,10 @@ components:
         id:
           type: integer
           format: int64
+          minimum: 1
         name:
           type: string
+          x-faker: name.firstName
         account:
           type: string
         amount:

@@ -1,7 +1,6 @@
 #!/bin/sh
 
-WORKING_DIR=$(sh ./cicd/util/config.sh working-dir)
-CONTRACT_OUTPUT_DIR=$(sh ./cicd/util/config.sh contract-output-dir)
+. ./cicd/configs/common.config
 
 clear_directory() {
   rm -rf ${1}
@@ -18,13 +17,13 @@ COMMAND=${1}
 if [ X"$COMMAND" = X"working-dir-create" ]; then
   create_directory $WORKING_DIR
 
-elif [ X"$COMMAND" = X"working-dir-clear" ]; then
+elif [ X"$COMMAND" = X"working-dir-remove" ]; then
   clear_directory $WORKING_DIR
 
 elif [ X"$COMMAND" = X"contract-output-dir-create" ]; then
   create_directory $CONTRACT_OUTPUT_DIR
 
-elif [ X"$COMMAND" = X"contract-output-dir-clear" ]; then
-  clear_directory $CONTRACT_OUTPUT_DIR
+elif [ X"$COMMAND" = X"remove" ]; then
+  clear_directory ${2}
 
 fi

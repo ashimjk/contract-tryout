@@ -1,6 +1,2 @@
-'!include': '../common/typescript.yaml'
-inputSpec: 'contract/fixed-deposit/spec/index.yaml'
-outputDir: 'artifacts/fixed-deposit/client'
-npmName: '@corpay/fixed-deposit-client-contract'
 npmVersion: 'v1.0.0'
 apiModulePrefix: 'FixedDepositContract'

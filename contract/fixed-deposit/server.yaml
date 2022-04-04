@@ -1,11 +1,2 @@
-'!include': '../common/spring-boot.yaml'
-
-inputSpec: 'contract/fixed-deposit/spec/index.yaml'
-outputDir: 'artifacts/fixed-deposit/server'
-
-artifactId: 'fixed-deposit-api'
 artifactVersion: 'v1.0.0'
-
-apiPackage: 'io.github.ashimjk.contract.fixed-deposit.api'
-modelPackage: 'io.github.ashimjk.contract.fixed-deposit.model'
-invokerPackage: 'io.github.ashimjk.contract.fixed-deposit.api.invoker'
+artifactId: 'fixed-deposit-api'

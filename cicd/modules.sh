@@ -1,1 +1,1 @@
-echo "payroll"
+echo "payroll" "fixed-deposit" "petstore"
