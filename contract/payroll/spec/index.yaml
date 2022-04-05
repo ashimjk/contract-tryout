@@ -57,21 +57,40 @@ paths:
           description: Invalid request
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
               example:
                 - title: invalid request
                   status: 400
-                  detail: name and photoUrls must be provided
+                  detail: firstName and lastName must be provided
                   validation:
                     - code: required
-                      field: name
+                      field: firstName
                       severity: error
                       message: must have provided
                     - code: required
-                      field: photoUrls
+                      field: lastName
                       severity: error
                       message: must have provided
         '405':
           description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                - title: invalid request
+                  status: 400
+                  detail: firstName and lastName must be provided
+                  validation:
+                    - code: required
+                      field: firstName
+                      severity: error
+                      message: must have provided
+                    - code: required
+                      field: lastName
+                      severity: error
+                      message: must have provided
   /employees/{reference}:
     get:
       tags:
@@ -117,10 +136,44 @@ paths:
                     modifiedAt: 2019-08-24T14:15:22Z
         '400':
           description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                - title: invalid request
+                  status: 400
+                  detail: firstName and lastName must be provided
+                  validation:
+                    - code: required
+                      field: firstName
+                      severity: error
+                      message: must have provided
+                    - code: required
+                      field: lastName
+                      severity: error
+                      message: must have provided
         '404':
-          description: Pet not found
+          description: employee not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                - title: invalid request
+                  status: 400
+                  detail: firstName and lastName must be provided
+                  validation:
+                    - code: required
+                      field: firstName
+                      severity: error
+                      message: must have provided
+                    - code: required
+                      field: lastName
+                      severity: error
+                      message: must have provided
         '418':
-          description: teapot response
+          description: employee response
           content:
             application/json:
               schema:
@@ -177,7 +230,7 @@ components:
   requestBodies:
     EmployeeRequest:
       required: true
-      description: Pet object that needs to be added to the store
+      description: Employee object that needs to be added
       content:
         application/json:
           schema:
@@ -251,6 +304,31 @@ components:
           type: integer
           format: int32
         type:
+          type: string
+        message:
+          type: string
+    ApiErrorResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+          format: int64
+        detail:
+          type: string
+        validation:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationResponse'
+    ValidationResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        field:
+          type: string
+        severity:
           type: string
         message:
           type: string
