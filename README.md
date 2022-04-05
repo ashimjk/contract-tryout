@@ -8,6 +8,10 @@
 
 ```npm run generate-specs```
 
+## Merge API Specification
+
+```npm run merge-specs```
+
 ## Build Contracts
 
 ```npm run build-contracts```
@@ -16,6 +20,6 @@
 
 ```npm run publish-contracts```
 
-## Contract Documentation
+## API Contract Documentation
 
 ```npm run docs```

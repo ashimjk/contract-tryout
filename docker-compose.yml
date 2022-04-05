@@ -1,10 +1,9 @@
 version: '3'
 services:
-  payroll-mock:
+  mock-api:
     image: stoplight/prism:4
     command: 'mock -h 0.0.0.0 /tmp/api.yml -d'
     volumes:
-      - ./contract/payroll/spec/index.yaml:/tmp/api.yml:ro
+      - ./docs/specs/api-contract.yaml:/tmp/api.yml:ro
     ports:
-      # Serve the mocked API locally as available on port 8080
       - '4010:4010'

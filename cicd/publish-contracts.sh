@@ -19,10 +19,10 @@ maven_deploy() {
 
   cd $SCRIPT_DIR/${CONTRACT_OUTPUT_DIR}/${module}/$1
 
-  sed -i "s|</project>|<distributionManagement><repository><id>RELEASES</id><name>RELEASES</name><url>https://artifactory.progressoft.io/artifactory/PS-Releases</url></repository><snapshotRepository><id>CORPAY-SNAPSHOTS</id><name>CORPAY-SNAPSHOTS</name><url>https://nexus.corporate-dev.progressoft.cloud/repository/corpay-maven-repo/</url></snapshotRepository></distributionManagement></project>|" pom.xml
+  sed -i "s|</project>|<distributionManagement><repository><id>RELEASES</id><name>RELEASES</name><url>https://artifactory.io/artifactory/Releases</url></repository><snapshotRepository><id>SNAPSHOTS</id><name>SNAPSHOTS</name><url>https://artifactory.io/artifactory/Snapshots</url></snapshotRepository></distributionManagement></project>|" pom.xml
 
   mvn -B build-helper:parse-version versions:set -DprocessAllModules=true -DnewVersion=${CI_BUILD_TAG} versions:commit
-  #  mvn source:jar-no-fork deploy -DskipTests -s ./cicd/settings.xml
+  #  mvn source:jar-no-fork deploy -DskipTests -s ./cicd/configs/settings.xml
   exit_if_error_found
 }
 
